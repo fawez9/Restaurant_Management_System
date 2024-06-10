@@ -1,12 +1,12 @@
-const { Schema } = require("mongoose");
-
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
 const ReservationSchema = new Schema({
   name: {
     type: String,
     required: true,
   },
   phone: {
-    type: Number,
+    type: String,
     required: true,
   },
   tableNumber: {
@@ -20,11 +20,6 @@ const ReservationSchema = new Schema({
   partySize: {
     type: Number,
     required: true,
-  },
-  status: {
-    type: String,
-    enum: ["pending", "completed", "cancelled"],
-    default: "pending",
   },
 });
 

@@ -1,25 +1,21 @@
-const { Schema } = require("mongoose");
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
 const OrderSchema = new Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  phone: {
+  tableNumber: {
     type: Number,
     required: true,
   },
-  items: {
-    //  TODO: add item model
-  },
-  totalPrice: {
-    type: Number,
-    required: true,
-  },
+  items: [
+    {
+      menuItem: { type: Schema.Types.ObjectId, ref: "MenuItem" },
+      quantity: { type: Number, required: true },
+    },
+  ],
   status: {
     type: String,
-    enum: ["pending", "completed", "cancelled"],
-    default: "pending",
+    enum: ["new", "in progress", "completed", "cancelled"],
+    default: "new",
   },
   date: {
     type: Date,
