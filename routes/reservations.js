@@ -2,7 +2,8 @@ const router = require("express").Router();
 const reservationController = require("../controllers/reservationController");
 
 router.get("/", reservationController.getAllReservations);
-router.post("/", reservationController.addReservation);
+router.get("/:id", reservationController.getReservationById);
+router.post("/", reservationController.createReservation);
 router.put("/:id", reservationController.updateReservation);
 router.delete("/:id", reservationController.deleteReservation);
 

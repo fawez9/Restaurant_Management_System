@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const InventorySchema = new Schema({
-  name: {
+  itemName: {
     type: String,
     required: true,
   },
@@ -12,6 +12,14 @@ const InventorySchema = new Schema({
   unit: {
     type: String,
     required: true,
+  },
+  reorderLevel: {
+    type: Number,
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
   },
 });
 

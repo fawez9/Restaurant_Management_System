@@ -7,14 +7,27 @@ const MenuItemSchema = new Schema({
   },
   description: {
     type: String,
+    required: true,
   },
   price: {
     type: Number,
     required: true,
   },
-  available: {
-    type: Boolean,
-    default: true,
+  recipe: [
+    {
+      ingredient: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Inventory",
+      },
+      quantity: {
+        type: Number,
+        required: true,
+      },
+    },
+  ],
+  createdAt: {
+    type: Date,
+    default: Date.now,
   },
 });
 

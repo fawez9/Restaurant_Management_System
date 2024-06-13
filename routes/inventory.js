@@ -1,9 +1,10 @@
 const router = require("express").Router();
 const inventoryController = require("../controllers/inventoryController");
 
-router.get("/", inventoryController.getAllItems);
-router.post("/", inventoryController.addItem);
-router.put("/:id", inventoryController.updateItem);
-router.delete("/:id", inventoryController.deleteItem);
+router.get("/", inventoryController.getAllInventoryItems);
+router.get("/:id", inventoryController.getInventoryItemById);
+router.post("/", inventoryController.createInventoryItem);
+router.put("/:id", inventoryController.updateInventoryItem);
+router.delete("/:id", inventoryController.deleteInventoryItem);
 
 module.exports = router;

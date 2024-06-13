@@ -1,9 +1,10 @@
 const router = require("express").Router();
 const menuController = require("../controllers/menuController");
 
-router.get("/", menuController.getAllItems);
-router.post("/", menuController.addItem);
-router.put("/:id", menuController.updateItem);
-router.delete("/:id", menuController.deleteItem);
+router.get("/", menuController.getAllMenuItems);
+router.get("/:id", menuController.getMenuItemById);
+router.post("/", menuController.createMenuItem);
+router.put("/:id", menuController.updateMenuItem);
+router.delete("/:id", menuController.deleteMenuItem);
 
 module.exports = router;
