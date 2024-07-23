@@ -47,10 +47,11 @@ const deleteInventoryItem = async (id) => {
 
 // Check and handle low-stock items
 const handleLowStockItems = async () => {
-  // Find all inventory items with quantity below reorder level
-  const lowStockItems = await Inventory.find({
-    quantity: { $lt: "$reorderLevel" },
-  });
+  // Find all inventory items
+  const allItems = await Inventory.find();
+
+  // Filter items where quantity is less than reorderLevel
+  const lowStockItems = allItems.filter((item) => item.quantity < item.reorderLevel);
 
   // Handle low-stock items (e.g., send notifications, generate reports)
   if (lowStockItems.length > 0) {
@@ -59,6 +60,8 @@ const handleLowStockItems = async () => {
   } else {
     console.log("No low-stock items found.");
   }
+
+  return lowStockItems;
 };
 
 module.exports = {
